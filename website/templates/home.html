@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block stylesheet %} 
+
+<link rel="stylesheet" href="./static/css/index.css">
+<link rel="stylesheet" href="./static/css/gameContainer.css">
+<link rel="stylesheet" href="./static/css/scoreContainer.css">
+
+{% endblock %}
+
+{% block title %}Home{% endblock %}
+{% block content%}
+<div class="container">
+
+    <div id="game-container">
+        <div id="letter-display">أ</div>
+        <div id="answer-buttons">
+            <button class="answer-btn", id="answerbtn1">alif</button>
+            <button class="answer-btn", id="answerbtn2">Ba</button>
+            <button class="answer-btn", id="answerbtn3">Ta</button>
+        </div>
+    </div>
+    <div class="display-container" id="score-container">
+        <div class="title">Score:</div>
+        <div class="display" id="score">0</div>
+        <button class="executeButton" id="startButton">START</button>
+    </div>
+    <div class="display-container" id="timer-container">
+        <div class="title">Timer:</div>
+        <div class="display" id="timer">30</div>
+        <button class="executeButton" id="timerFirstButton">0:30</button>
+        <button class="executeButton" id="timerSecondButton">1:00</button>
+    </div>
+
+</div>
+{% endblock %}

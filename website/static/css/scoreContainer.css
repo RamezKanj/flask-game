@@ -1,0 +1,25 @@
+.display-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    padding: 10px;
+    background-color: whitesmoke;
+    height: 250px;
+    width: 250px;
+    margin-left: 10px;
+}
+
+.title{
+    font-size: 48px;
+}
+
+.display{
+    font-size: 48px;
+}
+
+.executeButton{
+    height: 40px;
+    align-self: center;
+    cursor: pointer;
+}
