@@ -38,22 +38,20 @@ def get_random_key():
 def get_random_value(key):
     return random.choice(letter_map[key])
 
-def incorrect_values(key):
+
+def incorrect_keys(key):
     if key not in letter_map:
         return None
+
+    all_keys = list(letter_map.keys())
+
+    all_keys.remove(key)
+
+    incorrect_key_one = random.choice(all_keys)
+
+    incorrect_key_two = random.choice(all_keys)
+
+    while incorrect_key_two == incorrect_key_one:
+        incorrect_key_two = random.choice(all_keys)
     
-    correct_values = letter_map[key]
-
-    all_values = [value for values in letter_map.values() for value in values]
-
-    incorrect_values = [value for value in all_values if value not in correct_values]
-
-    random_incorrect_value_one = random.choice(list(incorrect_values))
-
-    random_incorrect_value_two = random.choice(list(incorrect_values))
-    while random_incorrect_value_two == random_incorrect_value_one:
-        random_incorrect_value_two = random.choice(list(incorrect_values))
-
-    return random_incorrect_value_one, random_incorrect_value_two
-
-
+    return incorrect_key_one, incorrect_key_two
