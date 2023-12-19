@@ -2,9 +2,9 @@
 
 {% block stylesheet %} 
 
-<link rel="stylesheet" href="./static/css/index.css">
-<link rel="stylesheet" href="./static/css/gameContainer.css">
-<link rel="stylesheet" href="./static/css/scoreContainer.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/gameContainer.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/scoreContainer.css') }}">
 
 {% endblock %}
 
