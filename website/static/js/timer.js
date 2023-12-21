@@ -1,3 +1,4 @@
+
 var timerValue = 30
 
 var countdownTimer
@@ -26,7 +27,7 @@ console.log(initialTimerValue)
 
 function toggleStart(){
     if ($('#startButton').text() === 'START'){
-        
+
         document.getElementById("random_key").removeAttribute("disabled");
         document.getElementById("incorrect_key_one").removeAttribute("disabled");
         document.getElementById("incorrect_key_two").removeAttribute("disabled");
