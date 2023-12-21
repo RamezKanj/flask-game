@@ -12,15 +12,14 @@ def home():
 
 @views.route('/get_random_data', methods=['GET'])
 def get_random_data():
-    # Get a new set of random data
     random_key = get_random_key()
     random_value = get_random_value(random_key)
     incorrect_key_one, incorrect_key_two = incorrect_keys(random_key)
 
-    # Return the data as JSON
+
     return jsonify({
         'random_key': random_key,
         'random_value': random_value,
         'incorrect_key_one': incorrect_key_one,
-        'incorrect_key_two': incorrect_key_two
+        'incorrect_key_two': incorrect_key_two,
     })
