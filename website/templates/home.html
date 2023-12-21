@@ -15,11 +15,11 @@
 <div class="container">
 
     <div id="game-container">
-        <div id="random_value">أ</div>
+        <div id="random_value"></div>
         <div id="answer-buttons">
-            <button class="answer-btn", id="random_key" disabled>alif</button>
-            <button class="answer-btn", id="incorrect_key_one" disabled>ba</button>
-            <button class="answer-btn", id="incorrect_key_two" disabled>ta</button>
+            <button class="answer-btn", id="random_key" disabled></button>
+            <button class="answer-btn", id="incorrect_key_one" disabled></button>
+            <button class="answer-btn", id="incorrect_key_two" disabled></button>
         </div>
     </div>
     <div class="display-container" id="score-container">
@@ -37,6 +37,5 @@
 </div>
 
 <script  src="{{ url_for('static', filename='/js/game.js') }}" ></script>
-<script  src="{{ url_for('static', filename='/js/timer.js') }}" ></script>
 
 {% endblock %}
