@@ -17,9 +17,9 @@
     <div id="game-container">
         <div id="random_value">أ</div>
         <div id="answer-buttons">
-            <button class="answer-btn", id="random_key">alif</button>
-            <button class="answer-btn", id="incorrect_key_one">ba</button>
-            <button class="answer-btn", id="incorrect_key_two">ta</button>
+            <button class="answer-btn", id="random_key" disabled>alif</button>
+            <button class="answer-btn", id="incorrect_key_one" disabled>ba</button>
+            <button class="answer-btn", id="incorrect_key_two" disabled>ta</button>
         </div>
     </div>
     <div class="display-container" id="score-container">
@@ -36,31 +36,7 @@
 
 </div>
 
-<script>
-    function updateContent() {
-        // Fetch new data from the server
-        $.get('/get_random_data', function(data) {
-            // Update the content
-            $('#random_value').text(data.random_value);
+<script  src="{{ url_for('static', filename='/js/game.js') }}" ></script>
+<script  src="{{ url_for('static', filename='/js/timer.js') }}" ></script>
 
-            var answers = [data.random_key, data.incorrect_key_one, data.incorrect_key_two];
-            
-            for (let i = answers.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                // Swap array[i] and array[j]
-                [answers[i], answers[j]] = [answers[j], answers[i]];
-            }
-
-            $('#random_key').text(answers[0]);
-            $('#incorrect_key_one').text(answers[1]);
-            $('#incorrect_key_two').text(answers[2]);
-
-        });
-    }
-
-    // Bind the function to the click event of the three value buttons
-    $('#random_key, #incorrect_key_one, #incorrect_key_two').on('click', function() {
-        updateContent();
-    });
-</script>
 {% endblock %}
