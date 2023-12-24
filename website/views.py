@@ -6,10 +6,15 @@ from .models import Game
 
 views = Blueprint('views', __name__)
 
-@views.route('/', methods=['GET', 'POST'])
+@views.route('/home', methods=['GET', 'POST'])
 @login_required
 def home():
     return render_template("home.html", user=current_user)
+
+@views.route('/lingo', methods=['GET', 'POST'])
+@login_required
+def lingo():
+    return render_template("lingo.html", user=current_user)
 
 @views.route('/get_random_data', methods=['GET'])
 @login_required

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block stylesheet %} 
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/gameContainer.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/scoreContainer.css') }}">
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+{% endblock %}
+
+{% block title %}Home{% endblock %}
+{% block content%}
+<div class="container">
+
+    <div id="game-container">
+        <div id="random_value"></div>
+        <div id="answer-buttons">
+            <button class="answer-btn", id="random_key" disabled></button>
+            <button class="answer-btn", id="incorrect_key_one" disabled></button>
+            <button class="answer-btn", id="incorrect_key_two" disabled></button>
+        </div>
+    </div>
+    <div class="display-container" id="score-container">
+        <div class="title">Score:</div>
+        <div class="display" id="score">0</div>
+        <button class="executeButton" id="startButton">START</button>
+    </div>
+    <div class="display-container" id="timer-container">
+        <div class="title">Timer:</div>
+        <div class="display" id="timer">30</div>
+        <button class="executeButton" id="timerFirstButton">0:30</button>
+        <button class="executeButton" id="timerSecondButton">1:00</button>
+    </div>
+
+</div>
+
+<script  src="{{ url_for('static', filename='/js/game.js') }}" ></script>
+
+{% endblock %}
