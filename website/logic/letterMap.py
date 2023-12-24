@@ -1,5 +1,9 @@
 import random
 
+
+#Dictionary that stores arabic transliterations in English letters as keys
+#with the actual arabic letter as a value in its different forms
+
 letter_map = {
     "alif": ["ا", "ـا", "آ", "إ", "أ"],
     "Ba": ["ب", "بـ", "ـبـ", "ـب"],
@@ -31,15 +35,23 @@ letter_map = {
     "Hamza": ["ء", "ء", "ء", "ء"],
 }
 
+#Return a random key from letter map
+
 def get_random_key():
     random_key = random.choice(list(letter_map.keys()))
     return random_key
+
+#Return a random value from a specified key
 
 def get_random_value(key):
     return random.choice(letter_map[key])
 
 
+#Return two keys ('incorrect keys') different than the given key in the map
+#e.g. incorrect_keys("hamza") -> any two other keys in the map that is not hamza
+
 def incorrect_keys(key):
+    
     if key not in letter_map:
         return None
 
