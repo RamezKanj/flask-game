@@ -6,6 +6,7 @@ from sqlalchemy.sql import func
 class Game(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     score = db.Column(db.Numeric(10))
+    time_control = db.Column(db.Numeric(10))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 

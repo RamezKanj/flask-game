@@ -1,4 +1,20 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
+
+{% block stylesheet %} 
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
+{% endblock %}
+
 {% block content%}
+
+<ul class="link-list">
+    <li><a href="{{ url_for('auth.login') }}">LINGO</a></li>
+    <li><a href="{{ url_for('auth.login') }}">ADVENTURE</a></li>
+    <li><a href="{{ url_for('views.credits') }}">CREDITS</a></li>
+    <li><a href="{{ url_for('views.feedback') }}">FEEDBACK</a></li>
+    <li><a href="{{ url_for('views.donate') }}">DONATE</a></li>
+</ul>
+
 {% endblock %}

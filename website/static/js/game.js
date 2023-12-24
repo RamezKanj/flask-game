@@ -78,6 +78,14 @@ function toggleStart(){
         
         $('#startButton').text('STOP')
 
+        $.post('/update_score', { time : timerValue}, function(response) {
+            if (response.success) {
+                console.log('Time_control updated successfully');
+            } else {
+                console.error('Failed to update time_control:', response.error);
+            }
+        })
+
         countdownTimer = setInterval(function() {
             timerValue--;
             $('#timer').text(timerValue);

@@ -1,4 +1,46 @@
+from flask import Blueprint, render_template, jsonify, request
+from flask_login import login_required, current_user
+from . import db
+from .models import Game
 import random
+
+lingo = Blueprint('lingo', __name__)
+
+
+@lingo.route('/lingo', methods=['GET', 'POST'])
+@login_required
+def game():
+    return render_template("lingo.html", user=current_user)
+
+
+@lingo.route('/get_random_data', methods=['GET'])
+@login_required
+def get_random_data():
+    random_key = get_random_key()
+    random_value = get_random_value(random_key)
+    incorrect_key_one, incorrect_key_two = incorrect_keys(random_key)
+
+
+    return jsonify({
+        'random_key': random_key,
+        'random_value': random_value,
+        'incorrect_key_one': incorrect_key_one,
+        'incorrect_key_two': incorrect_key_two,
+    })
+
+
+@lingo.route('/update_score', methods=['POST'])
+@login_required
+def update_score():
+    try:
+        score = int(request.form.get('score'))
+        time = int(request.form.get('time_control'))
+        game = Game(score=score, time=time, user_id=current_user.id)
+        db.session.add(game)
+        db.session.commit()
+        return jsonify({'success': True, 'message': 'Score updated successfully'})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
 
 
 #Dictionary that stores arabic transliterations in English letters as keys
