@@ -34,8 +34,8 @@ def get_random_data():
 def update_score():
     try:
         score = int(request.form.get('score'))
-        time = int(request.form.get('time'))
-        game = Game(score=score, time=time, user_id=current_user.id)
+        time_control = int(request.form.get('time_control'))
+        game = Game(score=score, time_control=time_control, user_id=current_user.id)
         db.session.add(game)
         db.session.commit()
         return jsonify({'success': True, 'message': 'Score updated successfully'})
