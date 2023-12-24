@@ -43,16 +43,19 @@ updateContent();
 
 
 var timerValue = 30
+var time_control = timerValue
 
 var countdownTimer
 
 function increaseTimer(){
     timerValue = 60
+    time_control = timerValue
     $('#timer').text(timerValue)
 }
 
 function decreaseTimer(){
     timerValue = 30
+    time_control = timerValue
     $('#timer').text(timerValue)
 }
 
@@ -84,7 +87,7 @@ function toggleStart(){
 
             if (timerValue === 0) {
 
-                $.post('/update_score', { score: score, time_control: initialTimerValue}, function(response) {
+                $.post('/update_score', { score: score, time_control: time_control}, function(response) {
                     if (response.success) {
                         console.log('Score updated successfully');
                     } else {
