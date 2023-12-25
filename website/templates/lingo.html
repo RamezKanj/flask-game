@@ -13,7 +13,8 @@
 
 {% block title %}Lingo{% endblock %}
 {% block content%}
-<div class="container">
+<div class="lingo">
+    <div class="container">
 
     <div id="game-container">
         <div id="random_value"></div>
@@ -34,23 +35,24 @@
         <button class="executeButton" id="timerFirstButton">0:30</button>
         <button class="executeButton" id="timerSecondButton">1:00</button>
     </div>
-    
-    <div class="display-leaderboard" id="leaderboard-30">
-        <h3>Top 10: (30s)</h3>
-        <ul id="leaderboard-list-30">
-                <!-- Leaderboard entries will be populated here -->
-        </ul>
-    </div>
-    <div class="display-leaderboard" id="leaderboard-60">
-        <h3>Top 10: (60s)</h3>
-        <ul id="leaderboard-list-60">
-                <!-- Leaderboard entries will be populated here -->
-        </ul>
-    </div>
-    
 
+    </div>
+
+    <div class="leaderboard-wrapper">
+        <div class="display-leaderboard" id="leaderboard-30">
+            <h3>Top 10: (30s)</h3>
+            <ul id="leaderboard-list-30">
+                <!-- Leaderboard entries will be populated here -->
+            </ul>
+        </div>
+        <div class="display-leaderboard" id="leaderboard-60">
+            <h3>Top 10: (60s)</h3>
+            <ul id="leaderboard-list-60">
+                <!-- Leaderboard entries will be populated here -->
+            </ul>
+        </div>
+    </div>
 </div>
-
 
 <script  src="{{ url_for('static', filename='/js/game.js') }}" ></script>
 

@@ -5,12 +5,19 @@
     text-align: center;
     padding: 10px;
     background-color: whitesmoke;
-    height: 350px;
-    width: 550px;
+    height: 250px;
+    width: 300px;
     margin-left: 10px;
 }
 
 .display-leaderboard ul {
     list-style-type: decimal; /* Use numbers for list items */
     padding-left: 20px; /* Adjust as needed for alignment */
+}
+
+.leaderboard-wrapper {
+    display: flex;
+    flex-direction: vertical;
+    width: 100%;
+    margin-top: 20px; /* Adjust as needed */
 }
