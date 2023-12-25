@@ -1,8 +1,9 @@
 from flask import Blueprint, render_template, jsonify, request
 from flask_login import login_required, current_user
 from . import db
-from .models import Game
+from .models import Game, Users
 import random
+
 
 lingo = Blueprint('lingo', __name__)
 
@@ -41,6 +42,29 @@ def update_score():
         return jsonify({'success': True, 'message': 'Score updated successfully'})
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)})
+    
+
+
+@lingo.route('/get_leaderboard', methods=['GET'])
+def get_leaderboard():
+    leaderboard_30 = db.session.query(Users.first_name, Game.score)\
+                               .join(Users, Users.id == Game.user_id)\
+                               .filter(Game.time_control == 30)\
+                               .order_by(Game.score.desc())\
+                               .limit(10).all()
+
+    leaderboard_60 = db.session.query(Users.first_name, Game.score)\
+                               .join(Users, Users.id == Game.user_id)\
+                               .filter(Game.time_control == 60)\
+                               .order_by(Game.score.desc())\
+                               .limit(10).all()
+
+    leaderboard_data = {
+        'leaderboard_30': [{'name': name, 'score': score} for name, score in leaderboard_30],
+        'leaderboard_60': [{'name': name, 'score': score} for name, score in leaderboard_60]
+    }
+
+    return jsonify(leaderboard_data)
 
 
 #Dictionary that stores arabic transliterations in English letters as keys

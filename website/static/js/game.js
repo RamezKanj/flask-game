@@ -70,6 +70,26 @@ $('#timerFirstButton').on('click', function(){
 var initialTimerValue = parseInt($('#timer').text())
 
 
+function updateLeaderboard() {
+    $.get('/get_leaderboard', function(response) {
+        // Clear existing leaderboard entries
+        $('#leaderboard-list-30').empty();
+        $('#leaderboard-list-60').empty();
+
+        // Populate the 30-second leaderboard
+        response.leaderboard_30.forEach(entry => {
+            $('#leaderboard-list-30').append(`<li>${entry.name}: ${entry.score}</li>`);
+        });
+
+        // Populate the 60-second leaderboard
+        response.leaderboard_60.forEach(entry => {
+            $('#leaderboard-list-60').append(`<li>${entry.name}: ${entry.score}</li>`);
+        });
+    });
+}
+
+
+
 function toggleStart(){
     if ($('#startButton').text() === 'START'){
 
@@ -89,6 +109,7 @@ function toggleStart(){
 
                 $.post('/update_score', { score: score, time_control: time_control}, function(response) {
                     if (response.success) {
+                        updateLeaderboard();
                         console.log('Score updated successfully');
                     } else {
                         console.error('Failed to update score:', response.error);
@@ -97,6 +118,8 @@ function toggleStart(){
 
                 toggleStart()
             }
+
+            
         }, 1000)
 
     }else{
@@ -123,3 +146,6 @@ $('#startButton').on('click', function(){
     toggleStart()
 })
 
+
+
+updateLeaderboard();

@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/gameContainer.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/scoreContainer.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/leaderboard.css') }}">
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
@@ -33,8 +34,23 @@
         <button class="executeButton" id="timerFirstButton">0:30</button>
         <button class="executeButton" id="timerSecondButton">1:00</button>
     </div>
+    
+    <div class="display-leaderboard" id="leaderboard-30">
+        <h3>Top 10: (30s)</h3>
+        <ul id="leaderboard-list-30">
+                <!-- Leaderboard entries will be populated here -->
+        </ul>
+    </div>
+    <div class="display-leaderboard" id="leaderboard-60">
+        <h3>Top 10: (60s)</h3>
+        <ul id="leaderboard-list-60">
+                <!-- Leaderboard entries will be populated here -->
+        </ul>
+    </div>
+    
 
 </div>
+
 
 <script  src="{{ url_for('static', filename='/js/game.js') }}" ></script>
 
